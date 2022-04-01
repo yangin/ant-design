@@ -1,16 +1,13 @@
 // deps-lint-skip-all
 import {
-  DerivativeToken,
   useStyleRegister,
   useToken,
   UseComponentStyleResult,
   GenerateStyle,
   resetComponent,
 } from '../../_util/theme';
-
-interface UploadToken extends DerivativeToken {
-  uploadPrefixCls: string;
-}
+import genDraggerStyle from './dragger';
+import type { UploadToken } from './interface';
 
 const genResetStyle: GenerateStyle<UploadToken> = token => {
   const { uploadPrefixCls } = token;
@@ -51,6 +48,7 @@ export default function useStyle(prefixCls: string): UseComponentStyleResult {
     useStyleRegister({ theme, token, hashId, path: [prefixCls] }, () => [
       genResetStyle(UploadToken, hashId),
       genBaseStyle(UploadToken, hashId),
+      genDraggerStyle(UploadToken, hashId),
     ]),
     hashId,
   ];
