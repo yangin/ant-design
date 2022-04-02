@@ -10,14 +10,14 @@ const genDraggerStyle: GenerateStyle<UploadToken> = token => {
       width: '100%',
       height: '100%',
       textAlign: 'center',
-      background: token.colorBgContainer,
-      border: `${token.controlLineWidth} ${token.controlLineType} ${token.controlLineWidth}`,
+      background: token.colorBgComponentSecondary,
+      border: `${token.controlLineWidth}px dashed ${token.colorBorder}`,
       borderRadius: token.radiusBase,
       cursor: 'pointer',
       transition: `border-color ${token.motionDurationSlow}`,
 
       [uploadPrefixCls]: {
-        padding: `${token.padding} 0`,
+        padding: `${token.padding}px 0`,
       },
 
       [`${uploadPrefixCls}${uploadPrefixCls}-disabled`]: {
@@ -36,27 +36,27 @@ const genDraggerStyle: GenerateStyle<UploadToken> = token => {
       },
 
       [`${uploadPrefixCls}:not(${uploadPrefixCls}-disabled):hover`]: {
-        borderColor: '@primary-5',
+        borderColor: token.colorPrimaryHover,
       },
 
-      [`p.${uploadPrefixCls}-drag-icon`]: {
-        marginBottom: '20px',
+      [`p${uploadPrefixCls}-drag-icon`]: {
+        marginBottom: 20,
 
         [iconPrefixCls]: {
-          color: '@primary-5',
-          fontSize: '48px',
+          color: token['blue-5'],
+          fontSize: 48,
         },
       },
 
-      [`p.${uploadPrefixCls}-text`]: {
+      [`p${uploadPrefixCls}-text`]: {
         margin: '0 0 4px',
-        color: '@heading-color',
-        fontSize: '@font-size-lg',
+        color: token.colorTextHeading,
+        fontSize: token.fontSizeLG,
       },
 
-      [`p.${uploadPrefixCls}-hint`]: {
-        color: '@text-color-secondary',
-        fontSize: '@font-size-base',
+      [`p${uploadPrefixCls}-hint`]: {
+        color: token.colorTextSecondary,
+        fontSize: token.fontSize,
       },
     },
   };
