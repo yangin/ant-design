@@ -1,12 +1,7 @@
 // deps-lint-skip-all
-import {
-  useStyleRegister,
-  useToken,
-  UseComponentStyleResult,
-  GenerateStyle,
-  resetComponent,
-} from '../../_util/theme';
+import { useStyleRegister, useToken, resetComponent } from '../../_util/theme';
 import genDraggerStyle from './dragger';
+import type { UseComponentStyleResult, GenerateStyle } from '../../_util/theme';
 import type { UploadToken } from './interface';
 
 const genResetStyle: GenerateStyle<UploadToken> = token => {
@@ -31,24 +26,36 @@ const genBaseStyle: GenerateStyle<UploadToken> = token => {
   const { uploadPrefixCls } = token;
 
   return {
-    [uploadPrefixCls]: {},
+    [`${uploadPrefixCls}-wrapper`]: {
+      [`${uploadPrefixCls}-select`]: {
+        display: 'inline-block',
+      },
+
+      [`${uploadPrefixCls}-disabled`]: {
+        cursor: 'not-allowed',
+      },
+    },
   };
 };
 
 // ============================== Export ==============================
-export default function useStyle(prefixCls: string): UseComponentStyleResult {
+export default function useStyle(
+  prefixCls: string,
+  iconPrefixCls: string,
+): UseComponentStyleResult {
   const [theme, token, hashId] = useToken();
 
   const UploadToken: UploadToken = {
     ...token,
     uploadPrefixCls: `.${prefixCls}`,
+    iconPrefixCls: `.${iconPrefixCls}`,
   };
 
   return [
     useStyleRegister({ theme, token, hashId, path: [prefixCls] }, () => [
-      genResetStyle(UploadToken, hashId),
-      genBaseStyle(UploadToken, hashId),
-      genDraggerStyle(UploadToken, hashId),
+      genResetStyle(UploadToken),
+      genBaseStyle(UploadToken),
+      genDraggerStyle(UploadToken),
     ]),
     hashId,
   ];
