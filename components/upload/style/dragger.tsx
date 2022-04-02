@@ -10,11 +10,11 @@ const genDraggerStyle: GenerateStyle<UploadToken> = token => {
       width: '100%',
       height: '100%',
       textAlign: 'center',
-      background: '@background-color-light',
-      border: '@border-width-base dashed @border-color-base',
-      borderRadius: '@border-radius-base',
+      background: token.colorBgContainer,
+      border: `${token.controlLineWidth} ${token.controlLineType} ${token.controlLineWidth}`,
+      borderRadius: token.radiusBase,
       cursor: 'pointer',
-      transition: 'border-color 0.3s',
+      transition: `border-color ${token.motionDurationSlow}`,
 
       [uploadPrefixCls]: {
         padding: `${token.padding} 0`,
