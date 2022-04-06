@@ -1,6 +1,8 @@
 // deps-lint-skip-all
 import { useStyleRegister, useToken, resetComponent } from '../../_util/theme';
 import genDraggerStyle from './dragger';
+import genListStyle from './list';
+import genPictureCardStyle from './picture-card';
 import type { UseComponentStyleResult, GenerateStyle } from '../../_util/theme';
 import type { UploadToken } from './interface';
 
@@ -49,6 +51,7 @@ export default function useStyle(
     ...token,
     uploadPrefixCls: `.${prefixCls}`,
     iconPrefixCls: `.${iconPrefixCls}`,
+    uploadPictureCardSize: 104,
   };
 
   return [
@@ -56,6 +59,8 @@ export default function useStyle(
       genResetStyle(UploadToken),
       genBaseStyle(UploadToken),
       genDraggerStyle(UploadToken),
+      genPictureCardStyle(UploadToken),
+      genListStyle(UploadToken),
     ]),
     hashId,
   ];
