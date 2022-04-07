@@ -3,7 +3,7 @@ import type { GenerateStyle } from '../../_util/theme';
 import type { UploadToken } from './interface';
 
 const genListStyle: GenerateStyle<UploadToken> = token => {
-  const { uploadPrefixCls } = token;
+  const { uploadPrefixCls, rootPrefixCls } = token;
 
   return {
     [`${uploadPrefixCls}-list`]: {
@@ -33,6 +33,11 @@ const genListStyle: GenerateStyle<UploadToken> = token => {
 
           [`${uploadPrefixCls}-list-item-card-actions-btn`]: {
             opacity: 0,
+          },
+
+          [`${uploadPrefixCls}-list-item-card-actions-btn${rootPrefixCls}-btn-sm`]: {
+            height: '20px',
+            lineHeight: 1,
           },
         },
       },
