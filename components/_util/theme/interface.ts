@@ -9,6 +9,7 @@ import type { ComponentToken as SelectComponentToken } from '../../select/style'
 import type { ComponentToken as SliderComponentToken } from '../../slider/style';
 import type { ComponentToken as TypographyComponentToken } from '../../typography/style';
 import type { ComponentToken as TimelineComponentToken } from '../../timeline/style';
+import type { ComponentToken as UploadComponentToken } from '../../upload/style';
 
 export const PresetColors = [
   'blue',
@@ -76,6 +77,7 @@ export interface OverrideToken {
   Timeline?: TimelineComponentToken;
   Tabs?: {};
   Card?: {};
+  Upload?: UploadComponentToken;
 }
 
 /** Final token which contains the components level override */

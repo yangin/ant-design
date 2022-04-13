@@ -2,10 +2,10 @@ import type { GenerateStyle } from '../../_util/theme';
 import type { UploadToken } from './interface';
 
 const genDraggerStyle: GenerateStyle<UploadToken> = token => {
-  const { uploadPrefixCls, iconPrefixCls } = token;
+  const { componentCls, iconCls } = token;
 
   return {
-    [`${uploadPrefixCls}-drag`]: {
+    [`${componentCls}-drag`]: {
       position: 'relative',
       width: '100%',
       height: '100%',
@@ -16,45 +16,45 @@ const genDraggerStyle: GenerateStyle<UploadToken> = token => {
       cursor: 'pointer',
       transition: `border-color ${token.motionDurationSlow}`,
 
-      [uploadPrefixCls]: {
+      [componentCls]: {
         padding: `${token.padding}px 0`,
       },
 
-      [`${uploadPrefixCls}${uploadPrefixCls}-disabled`]: {
+      [`${componentCls}${componentCls}-disabled`]: {
         cursor: 'not-allowed',
       },
 
-      [`${uploadPrefixCls}-btn`]: {
+      [`${componentCls}-btn`]: {
         display: 'table',
         height: '100%',
         outline: 'none',
       },
 
-      [`${uploadPrefixCls}-drag-container`]: {
+      [`${componentCls}-drag-container`]: {
         display: 'table-cell',
         verticalAlign: 'middle',
       },
 
-      [`${uploadPrefixCls}:not(${uploadPrefixCls}-disabled):hover`]: {
+      [`${componentCls}:not(${componentCls}-disabled):hover`]: {
         borderColor: token.colorPrimaryHover,
       },
 
-      [`p${uploadPrefixCls}-drag-icon`]: {
+      [`p${componentCls}-drag-icon`]: {
         marginBottom: 20,
 
-        [iconPrefixCls]: {
+        [iconCls]: {
           color: token['blue-5'],
           fontSize: 48,
         },
       },
 
-      [`p${uploadPrefixCls}-text`]: {
+      [`p${componentCls}-text`]: {
         margin: '0 0 4px',
         color: token.colorTextHeading,
         fontSize: token.fontSizeLG,
       },
 
-      [`p${uploadPrefixCls}-hint`]: {
+      [`p${componentCls}-hint`]: {
         color: token.colorTextSecondary,
         fontSize: token.fontSize,
       },

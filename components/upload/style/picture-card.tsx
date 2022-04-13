@@ -3,15 +3,15 @@ import type { GenerateStyle } from '../../_util/theme';
 import type { UploadToken } from './interface';
 
 const genPictureCardStyle: GenerateStyle<UploadToken> = token => {
-  const { uploadPrefixCls } = token;
+  const { componentCls } = token;
 
   return {
-    [`${uploadPrefixCls}-picture-card-wrapper`]: {
+    [`${componentCls}-picture-card-wrapper`]: {
       ...clearFix(),
       display: 'inline-block',
       width: '100%',
     },
-    [`${uploadPrefixCls}${uploadPrefixCls}-select-picture-card`]: {
+    [`${componentCls}${componentCls}-select-picture-card`]: {
       width: token.uploadPictureCardSize,
       height: token.uploadPictureCardSize,
       marginRight: token.marginXS,
@@ -24,7 +24,7 @@ const genPictureCardStyle: GenerateStyle<UploadToken> = token => {
       cursor: 'pointer',
       transition: `border-color ${token.motionDurationSlow}`,
 
-      [`> ${uploadPrefixCls}`]: {
+      [`> ${componentCls}`]: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -32,7 +32,7 @@ const genPictureCardStyle: GenerateStyle<UploadToken> = token => {
         textAlign: 'center',
       },
 
-      [`${uploadPrefixCls}-select-picture-card:not(${uploadPrefixCls}-disabled):hover`]: {
+      [`${componentCls}-select-picture-card:not(${componentCls}-disabled):hover`]: {
         borderColor: token.colorPrimary,
       },
     },

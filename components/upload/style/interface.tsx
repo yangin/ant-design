@@ -1,7 +1,7 @@
-import type { DerivativeToken } from '../../_util/theme';
+import type { FullToken } from '../../_util/theme';
 
-export interface UploadToken extends DerivativeToken {
-  uploadPrefixCls: string;
-  iconPrefixCls: string;
+export interface ComponentToken {
   uploadPictureCardSize: number;
 }
+
+export interface UploadToken extends FullToken<'Upload'> {}

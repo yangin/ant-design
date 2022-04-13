@@ -1,16 +1,18 @@
 // deps-lint-skip-all
-import { useStyleRegister, useToken, resetComponent } from '../../_util/theme';
+import { genComponentStyleHook, resetComponent } from '../../_util/theme';
 import genDraggerStyle from './dragger';
 import genListStyle from './list';
 import genPictureCardStyle from './picture-card';
-import type { UseComponentStyleResult, GenerateStyle } from '../../_util/theme';
-import type { UploadToken } from './interface';
+import type { GenerateStyle } from '../../_util/theme';
+import type { UploadToken, ComponentToken } from './interface';
+
+export type { ComponentToken };
 
 const genResetStyle: GenerateStyle<UploadToken> = token => {
-  const { uploadPrefixCls } = token;
+  const { componentCls } = token;
 
   return {
-    [uploadPrefixCls]: {
+    [componentCls]: {
       ...resetComponent(token),
       outline: 0,
       p: {
@@ -25,15 +27,15 @@ const genResetStyle: GenerateStyle<UploadToken> = token => {
 };
 
 const genBaseStyle: GenerateStyle<UploadToken> = token => {
-  const { uploadPrefixCls } = token;
+  const { componentCls } = token;
 
   return {
-    [`${uploadPrefixCls}-wrapper`]: {
-      [`${uploadPrefixCls}-select`]: {
+    [`${componentCls}-wrapper`]: {
+      [`${componentCls}-select`]: {
         display: 'inline-block',
       },
 
-      [`${uploadPrefixCls}-disabled`]: {
+      [`${componentCls}-disabled`]: {
         cursor: 'not-allowed',
       },
     },
@@ -41,27 +43,16 @@ const genBaseStyle: GenerateStyle<UploadToken> = token => {
 };
 
 // ============================== Export ==============================
-export default function useStyle(
-  prefixCls: string,
-  iconPrefixCls: string,
-): UseComponentStyleResult {
-  const [theme, token, hashId] = useToken();
-
-  const UploadToken: UploadToken = {
-    ...token,
-    uploadPrefixCls: `.${prefixCls}`,
-    iconPrefixCls: `.${iconPrefixCls}`,
+export default genComponentStyleHook(
+  'Upload',
+  token => [
+    genResetStyle(token),
+    genBaseStyle(token),
+    genDraggerStyle(token),
+    genPictureCardStyle(token),
+    genListStyle(token),
+  ],
+  () => ({
     uploadPictureCardSize: 104,
-  };
-
-  return [
-    useStyleRegister({ theme, token, hashId, path: [prefixCls] }, () => [
-      genResetStyle(UploadToken),
-      genBaseStyle(UploadToken),
-      genDraggerStyle(UploadToken),
-      genPictureCardStyle(UploadToken),
-      genListStyle(UploadToken),
-    ]),
-    hashId,
-  ];
-}
+  }),
+);
