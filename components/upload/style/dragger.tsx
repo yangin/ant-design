@@ -1,7 +1,6 @@
-import type { GenerateStyle } from '../../_util/theme';
-import type { UploadToken } from './interface';
+import type { GenerateStyle, FullToken } from '../../_util/theme';
 
-const genDraggerStyle: GenerateStyle<UploadToken> = token => {
+const genDraggerStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls, iconCls } = token;
 
   return {

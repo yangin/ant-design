@@ -3,12 +3,13 @@ import { genComponentStyleHook, resetComponent } from '../../_util/theme';
 import genDraggerStyle from './dragger';
 import genListStyle from './list';
 import genPictureCardStyle from './picture-card';
-import type { GenerateStyle } from '../../_util/theme';
-import type { UploadToken, ComponentToken } from './interface';
+import type { GenerateStyle, FullToken } from '../../_util/theme';
 
-export type { ComponentToken };
+export interface ComponentToken {
+  uploadPictureCardSize: number;
+}
 
-const genResetStyle: GenerateStyle<UploadToken> = token => {
+const genResetStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls } = token;
 
   return {
@@ -26,7 +27,7 @@ const genResetStyle: GenerateStyle<UploadToken> = token => {
   };
 };
 
-const genBaseStyle: GenerateStyle<UploadToken> = token => {
+const genBaseStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls } = token;
 
   return {

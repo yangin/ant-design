@@ -1,8 +1,7 @@
 import { clearFix, resetComponent } from '../../_util/theme';
-import type { GenerateStyle } from '../../_util/theme';
-import type { UploadToken } from './interface';
+import type { GenerateStyle, FullToken } from '../../_util/theme';
 
-const genListStyle: GenerateStyle<UploadToken> = token => {
+const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls, antCls } = token;
 
   return {

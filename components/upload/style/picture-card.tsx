@@ -1,8 +1,7 @@
 import { clearFix } from '../../_util/theme';
-import type { GenerateStyle } from '../../_util/theme';
-import type { UploadToken } from './interface';
+import type { GenerateStyle, FullToken } from '../../_util/theme';
 
-const genPictureCardStyle: GenerateStyle<UploadToken> = token => {
+const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls } = token;
 
   return {
