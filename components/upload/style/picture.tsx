@@ -1,6 +1,31 @@
 import { clearFix } from '../../_util/theme';
 import type { GenerateStyle, FullToken } from '../../_util/theme';
 
+const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
+  const { componentCls } = token;
+  const itemCls = `${componentCls}-list-item`;
+
+  return {
+    [`${componentCls}-picture, ${componentCls}-picture-card`]: {
+      [itemCls]: {
+        position: 'relative',
+        height: '66px',
+        padding: token.paddingXS,
+        border: `${token.controlLineWidth}px ${token.uploadPictureCardBorderStyle} ${token.colorBorder}`,
+        borderRadius: token.radiusBase,
+
+        [`${itemCls}:hover`]: {
+          background: 'transparent',
+        },
+
+        [`${itemCls}-error`]: {
+          borderColor: token.colorError,
+        },
+      },
+    },
+  };
+};
+
 const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls } = token;
 
@@ -38,4 +63,4 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   };
 };
 
-export default genPictureCardStyle;
+export { genPictureStyle, genPictureCardStyle };

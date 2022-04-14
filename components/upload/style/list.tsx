@@ -50,12 +50,12 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           [`
             ${actionsCls}-btn:focus,
             ${actionsCls}.picture ${actionsCls}-btn
-            `]: {
+          `]: {
             opacity: 1,
           },
 
           [iconCls]: {
-            color: '@upload-actions-color',
+            color: token.uploadActionsColor,
           },
         },
 
