@@ -4,19 +4,22 @@ import type { GenerateStyle, FullToken } from '../../_util/theme';
 const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls, antCls, iconCls } = token;
 
+  const itemCls = `${componentCls}-list-item`;
+  const actionsCls = `${itemCls}-card-actions`;
+
   return {
     [`${componentCls}-list`]: {
       ...resetComponent(token),
       ...clearFix(),
       lineHeight: token.lineHeight,
 
-      [`${componentCls}-list-item`]: {
+      [itemCls]: {
         position: 'relative',
         height: token.lineHeight * token.fontSizeBase,
         marginTop: token.marginXS,
         fontSize: token.fontSizeBase,
 
-        [`${componentCls}-list-item-name`]: {
+        [`${itemCls}-name`]: {
           display: 'inline-block',
           width: '100%',
           paddingLeft: token.fontSizeBase + token.paddingXS,
@@ -26,27 +29,27 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           textOverflow: 'ellipsis',
         },
 
-        [`${componentCls}-list-item-card-actions`]: {
+        [actionsCls]: {
           position: 'absolute',
           right: 0,
 
-          [`${componentCls}-list-item-card-actions-btn`]: {
+          [`${actionsCls}-btn`]: {
             opacity: 0,
           },
 
-          [`${componentCls}-list-item-card-actions-btn${antCls}-btn-sm`]: {
+          [`${actionsCls}-btn${antCls}-btn-sm`]: {
             height: '20px',
             lineHeight: 1,
           },
 
-          [`${componentCls}-list-item-card-actions.picture`]: {
+          [`${actionsCls}.picture`]: {
             top: '22px',
             lineHeight: 0,
           },
 
           [`
-            ${componentCls}-list-item-card-actions-btn:focus,
-            ${componentCls}-list-item-card-actions.picture ${componentCls}-list-item-card-actions-btn
+            ${actionsCls}-btn:focus,
+            ${actionsCls}.picture ${actionsCls}-btn
             `]: {
             opacity: 1,
           },
@@ -56,7 +59,7 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           },
         },
 
-        [`${componentCls}-list-item-info`]: {
+        [`${itemCls}-info`]: {
           height: '100%',
           padding: '0 4px',
           transition: `background-color ${token.motionDurationSlow}`,
@@ -91,36 +94,36 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           },
         },
 
-        [`${componentCls}-list-item:hover ${componentCls}-list-item-info`]: {
+        [`${itemCls}:hover ${itemCls}-info`]: {
           backgroundColor: token.controlItemBgHover,
         },
 
         [`
-          ${componentCls}-list-item:hover ${iconCls}-close,
-          ${componentCls}-list-item:hover ${componentCls}-list-item-card-actions-btn
+          ${itemCls}:hover ${iconCls}-close,
+          ${itemCls}:hover ${actionsCls}-btn
         `]: {
           opacity: 1,
         },
 
         [`
-          ${componentCls}-list-item-error,
-          ${componentCls}-list-item-error ${componentCls}-text-icon > ${iconCls},
-          ${componentCls}-list-item-error ${componentCls}-list-item-name
+          ${itemCls}-error,
+          ${itemCls}-error ${componentCls}-text-icon > ${iconCls},
+          ${itemCls}-error ${itemCls}-name
         `]: {
           color: token.colorError,
         },
 
-        [`${componentCls}-list-item-error ${componentCls}-list-item-card-actions`]: {
+        [`${itemCls}-error ${actionsCls}`]: {
           [iconCls]: {
             color: token.colorError,
           },
 
-          [`${componentCls}-list-item-card-actions-btn`]: {
+          [`${actionsCls}-btn`]: {
             opacity: 1,
           },
         },
 
-        [`${componentCls}-list-item-progress`]: {
+        [`${itemCls}-progress`]: {
           position: 'absolute',
           bottom: '-12px',
           width: '100%',
