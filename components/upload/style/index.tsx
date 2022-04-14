@@ -12,29 +12,22 @@ export interface ComponentToken {
   uploadActionsColor: CSSObject['color'];
 }
 
-const genResetStyle: GenerateStyle<FullToken<'Upload'>> = token => {
-  const { componentCls } = token;
-
-  return {
-    [componentCls]: {
-      ...resetComponent(token),
-      outline: 0,
-      p: {
-        margin: 0,
-      },
-
-      "input[type='file']": {
-        cursor: 'pointer',
-      },
-    },
-  };
-};
-
 const genBaseStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls } = token;
 
   return {
     [`${componentCls}-wrapper`]: {
+      [componentCls]: {
+        ...resetComponent(token),
+        outline: 0,
+        p: {
+          margin: 0,
+        },
+        "input[type='file']": {
+          cursor: 'pointer',
+        },
+      },
+
       [`${componentCls}-select`]: {
         display: 'inline-block',
       },
@@ -50,7 +43,6 @@ const genBaseStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 export default genComponentStyleHook(
   'Upload',
   token => [
-    genResetStyle(token),
     genBaseStyle(token),
     genDraggerStyle(token),
     genPictureStyle(token),
