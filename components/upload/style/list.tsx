@@ -67,8 +67,7 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             height: '100%',
           },
 
-          [`
-      ${componentCls}-text-icon ${iconCls}`]: {
+          [`${componentCls}-text-icon ${iconCls}`]: {
             position: 'absolute',
             top: token.fontSizeBase / 2 - 2,
             color: token.colorTextSecondary,
