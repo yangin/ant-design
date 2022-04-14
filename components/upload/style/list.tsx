@@ -2,7 +2,7 @@ import { clearFix, resetComponent } from '../../_util/theme';
 import type { GenerateStyle, FullToken } from '../../_util/theme';
 
 const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
-  const { componentCls, antCls } = token;
+  const { componentCls, antCls, iconCls } = token;
 
   return {
     [`${componentCls}-list`]: {
@@ -37,6 +37,24 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           [`${componentCls}-list-item-card-actions-btn${antCls}-btn-sm`]: {
             height: '20px',
             lineHeight: 1,
+          },
+
+          [`${componentCls}-list-item-card-actions.picture`]: {
+            top: '22px',
+            lineHeight: 0,
+          },
+
+          [
+            `
+            ${componentCls}-list-item-card-actions-btn:focus,
+            ${componentCls}-list-item-card-actions.picture ${componentCls}-list-item-card-actions-btn
+            `
+          ]: {
+            opacity: 1,
+          },
+
+          [iconCls]: {
+            color: '@upload-actions-color',
           },
         },
       },
