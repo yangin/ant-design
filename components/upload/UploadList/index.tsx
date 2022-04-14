@@ -107,7 +107,7 @@ const InternalUploadList: React.ForwardRefRenderFunction<unknown, UploadListProp
     if (iconRender) {
       return iconRender(file, listType);
     }
-    const isLoading = file.status === 'uploading';
+    const isLoading = true;
     const fileIcon = isImgUrl && isImgUrl(file) ? <PictureTwoTone /> : <FileTwoTone />;
     let icon: React.ReactNode = isLoading ? <LoadingOutlined /> : <PaperClipOutlined />;
     if (listType === 'picture') {
