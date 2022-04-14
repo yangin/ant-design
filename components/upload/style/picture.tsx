@@ -49,6 +49,65 @@ const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           overflow: 'hidden',
         },
       },
+
+      // Adjust the color of the error icon : https://github.com/ant-design/ant-design/pull/24160
+      [`${itemCls}-error ${itemCls}-thumbnail ${iconCls}`]: {
+        [`svg path[fill='#e6f7ff']`]: {
+          fill: token.colorBgError,
+        },
+        [`svg path[fill='#1890ff']`]: {
+          fill: token.colorError,
+        },
+      },
+
+      [`${itemCls}-icon`]: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        fontSize: '26px',
+        transform: 'translate(-50%, -50%)',
+
+        [iconCls]: {
+          fontSize: '26px',
+        },
+      },
+
+      [`${itemCls}-image`]: {
+        maxWidth: '100%',
+      },
+
+      [`${itemCls}-name`]: {
+        display: 'inline-block',
+        boxSizing: 'border-box',
+        maxWidth: '100%',
+        margin: '0 0 0 8px',
+        paddingRight: '8px',
+        paddingLeft: '48px',
+        overflow: 'hidden',
+        lineHeight: '44px',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        transition: `all ${token.motionDurationSlow}`,
+      },
+
+      [`${itemCls}-uploading ${itemCls}-name`]: {
+        marginBottom: '12px',
+      },
+
+      [`${itemCls}-progress`]: {
+        bottom: '14px',
+        width: 'calc(100% - 24px)',
+        marginTop: 0,
+        paddingLeft: '56px',
+      },
+
+      [`${iconCls}-close`]: {
+        position: 'absolute',
+        top: '8px',
+        right: '8px',
+        lineHeight: 1,
+        opacity: 1,
+      },
     },
   };
 };
