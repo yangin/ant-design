@@ -4,58 +4,60 @@ const genDraggerStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls, iconCls } = token;
 
   return {
-    [`${componentCls}-drag`]: {
-      position: 'relative',
-      width: '100%',
-      height: '100%',
-      textAlign: 'center',
-      background: token.colorBgComponentSecondary,
-      border: `${token.controlLineWidth}px dashed ${token.colorBorder}`,
-      borderRadius: token.radiusBase,
-      cursor: 'pointer',
-      transition: `border-color ${token.motionDurationSlow}`,
-
-      [componentCls]: {
-        padding: `${token.padding}px 0`,
-      },
-
-      [`${componentCls}${componentCls}-disabled`]: {
-        cursor: 'not-allowed',
-      },
-
-      [`${componentCls}-btn`]: {
-        display: 'table',
+    [`${componentCls}-wrapper`]: {
+      [`${componentCls}-drag`]: {
+        position: 'relative',
+        width: '100%',
         height: '100%',
-        outline: 'none',
-      },
+        textAlign: 'center',
+        background: token.colorBgComponentSecondary,
+        border: `${token.controlLineWidth}px dashed ${token.colorBorder}`,
+        borderRadius: token.radiusBase,
+        cursor: 'pointer',
+        transition: `border-color ${token.motionDurationSlow}`,
 
-      [`${componentCls}-drag-container`]: {
-        display: 'table-cell',
-        verticalAlign: 'middle',
-      },
-
-      [`${componentCls}:not(${componentCls}-disabled):hover`]: {
-        borderColor: token.colorPrimaryHover,
-      },
-
-      [`p${componentCls}-drag-icon`]: {
-        marginBottom: 20,
-
-        [iconCls]: {
-          color: token['blue-5'],
-          fontSize: 48,
+        [componentCls]: {
+          padding: `${token.padding}px 0`,
         },
-      },
 
-      [`p${componentCls}-text`]: {
-        margin: '0 0 4px',
-        color: token.colorTextHeading,
-        fontSize: token.fontSizeLG,
-      },
+        [`${componentCls}${componentCls}-disabled`]: {
+          cursor: 'not-allowed',
+        },
 
-      [`p${componentCls}-hint`]: {
-        color: token.colorTextSecondary,
-        fontSize: token.fontSizeBase,
+        [`${componentCls}-btn`]: {
+          display: 'table',
+          height: '100%',
+          outline: 'none',
+        },
+
+        [`${componentCls}-drag-container`]: {
+          display: 'table-cell',
+          verticalAlign: 'middle',
+        },
+
+        [`${componentCls}:not(${componentCls}-disabled):hover`]: {
+          borderColor: token.colorPrimaryHover,
+        },
+
+        [`p${componentCls}-drag-icon`]: {
+          marginBottom: 20,
+
+          [iconCls]: {
+            color: token['blue-5'],
+            fontSize: 48,
+          },
+        },
+
+        [`p${componentCls}-text`]: {
+          margin: '0 0 4px',
+          color: token.colorTextHeading,
+          fontSize: token.fontSizeLG,
+        },
+
+        [`p${componentCls}-hint`]: {
+          color: token.colorTextSecondary,
+          fontSize: token.fontSizeBase,
+        },
       },
     },
   };

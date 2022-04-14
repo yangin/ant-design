@@ -1,4 +1,4 @@
-import { clearFix, resetComponent } from '../../_util/theme';
+import { clearFix } from '../../_util/theme';
 import type { GenerateStyle, FullToken } from '../../_util/theme';
 
 const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
@@ -9,7 +9,6 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   return {
     [`${componentCls}-wrapper`]: {
       [`${componentCls}-list`]: {
-        ...resetComponent(token),
         ...clearFix(),
         lineHeight: token.lineHeight,
 

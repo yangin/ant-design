@@ -125,7 +125,6 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
       ...clearFix(),
       display: 'inline-block',
       width: '100%',
-
       [`${componentCls}${componentCls}-select-picture-card`]: {
         width: token.uploadPictureCardSize,
         height: token.uploadPictureCardSize,

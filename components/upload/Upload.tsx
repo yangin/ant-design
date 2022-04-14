@@ -344,7 +344,6 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
             typeof showUploadList === 'boolean' ? ({} as ShowUploadListInterface) : showUploadList;
           return (
             <UploadList
-              className={hashId}
               listType={listType}
               items={mergedFileList}
               previewFile={previewFile}
@@ -373,21 +372,16 @@ const InternalUpload: React.ForwardRefRenderFunction<unknown, UploadProps> = (pr
     );
 
   if (type === 'drag') {
-    const dragCls = classNames(
-      prefixCls,
-      {
-        [`${prefixCls}-drag`]: true,
-        [`${prefixCls}-drag-uploading`]: mergedFileList.some(file => file.status === 'uploading'),
-        [`${prefixCls}-drag-hover`]: dragState === 'dragover',
-        [`${prefixCls}-disabled`]: disabled,
-        [`${prefixCls}-rtl`]: direction === 'rtl',
-        [`${prefixCls}-in-form-item`]: isFormItemInput,
-      },
-      className,
-      hashId,
-    );
+    const dragCls = classNames(prefixCls, {
+      [`${prefixCls}-drag`]: true,
+      [`${prefixCls}-drag-uploading`]: mergedFileList.some(file => file.status === 'uploading'),
+      [`${prefixCls}-drag-hover`]: dragState === 'dragover',
+      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-rtl`]: direction === 'rtl',
+      [`${prefixCls}-in-form-item`]: isFormItemInput,
+    });
     return wrapSSR(
-      <span>
+      <span className={classNames(`${prefixCls}-wrapper`, className, hashId)}>
         <div
           className={dragCls}
           onDrop={onFileDrop}

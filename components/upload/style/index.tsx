@@ -17,12 +17,10 @@ const genBaseStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 
   return {
     [`${componentCls}-wrapper`]: {
+      ...resetComponent(token),
+
       [componentCls]: {
-        ...resetComponent(token),
         outline: 0,
-        p: {
-          margin: 0,
-        },
         "input[type='file']": {
           cursor: 'pointer',
         },
