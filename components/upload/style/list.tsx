@@ -77,8 +77,8 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 
         [`${iconCls}-close`]: {
           position: 'absolute',
-          top: '6px',
-          right: '4px',
+          top: 6,
+          right: 4,
           color: token.colorTextSecondary,
           fontSize: 10,
           lineHeight: 0,
@@ -96,17 +96,17 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
         },
 
         [`
-      ${componentCls}-list-item:hover ${iconCls}-close,
-      ${componentCls}-list-item:hover ${componentCls}-list-item-card-actions-btn
-    `]: {
+          ${componentCls}-list-item:hover ${iconCls}-close,
+          ${componentCls}-list-item:hover ${componentCls}-list-item-card-actions-btn
+        `]: {
           opacity: 1,
         },
 
         [`
-    ${componentCls}-list-item-error,
-    ${componentCls}-list-item-error ${componentCls}-text-icon > ${iconCls},
-    ${componentCls}-list-item-error ${componentCls}-list-item-name
-    `]: {
+          ${componentCls}-list-item-error,
+          ${componentCls}-list-item-error ${componentCls}-text-icon > ${iconCls},
+          ${componentCls}-list-item-error ${componentCls}-list-item-name
+        `]: {
           color: token.colorError,
         },
 
