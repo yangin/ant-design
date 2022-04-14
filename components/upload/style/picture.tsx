@@ -1,3 +1,4 @@
+import { TinyColor } from '@ctrl/tinycolor';
 import { clearFix } from '../../_util/theme';
 import type { GenerateStyle, FullToken } from '../../_util/theme';
 
@@ -168,6 +169,23 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
         [itemCls]: {
           height: '100%',
           margin: 0,
+        },
+
+        [`${itemCls}-info`]: {
+          position: 'relative',
+          height: '100%',
+          overflow: 'hidden',
+
+          [`${itemCls}-info::before`]: {
+            position: 'absolute',
+            zIndex: 1,
+            width: '100%',
+            height: '100%',
+            backgroundColor: new TinyColor('#000').setAlpha(0.5).toRgbString(),
+            opacity: 0,
+            transition: `all ${token.motionDurationSlow}`,
+            content: '" "',
+          },
         },
       },
     },
