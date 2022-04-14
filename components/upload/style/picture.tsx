@@ -2,7 +2,7 @@ import { clearFix } from '../../_util/theme';
 import type { GenerateStyle, FullToken } from '../../_util/theme';
 
 const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
-  const { componentCls } = token;
+  const { componentCls, iconCls } = token;
   const itemCls = `${componentCls}-list-item`;
 
   return {
@@ -14,12 +14,39 @@ const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
         border: `${token.controlLineWidth}px ${token.uploadPictureCardBorderStyle} ${token.colorBorder}`,
         borderRadius: token.radiusBase,
 
-        [`${itemCls}:hover`]: {
-          background: 'transparent',
-        },
-
         [`${itemCls}-error`]: {
           borderColor: token.colorError,
+        },
+      },
+
+      [`${itemCls}-info`]: {
+        padding: 0,
+      },
+
+      [`${itemCls}:hover ${itemCls}-info`]: {
+        background: 'transparent',
+      },
+
+      [`${itemCls}-uploading`]: {
+        borderStyle: 'dashed',
+      },
+
+      [`${itemCls}-thumbnail`]: {
+        width: '48px',
+        height: '48px',
+        lineHeight: '60px',
+        textAlign: 'center',
+        opacity: 0.8,
+
+        [iconCls]: {
+          fontSize: 26,
+        },
+
+        img: {
+          display: 'block',
+          width: '48px',
+          height: '48px',
+          overflow: 'hidden',
         },
       },
     },
