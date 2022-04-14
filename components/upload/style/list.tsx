@@ -73,22 +73,60 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             color: token.colorTextSecondary,
             fontSize: token.fontSizeBase,
           },
+        },
 
-          [`${iconCls}-close`]: {
-            position: 'absolute',
-            top: '6px',
-            right: '4px',
-            color: token.colorTextSecondary,
-            fontSize: 10,
-            lineHeight: 0,
-            cursor: 'pointer',
-            opacity: 0,
-            transition: `all ${token.motionDurationSlow}`,
+        [`${iconCls}-close`]: {
+          position: 'absolute',
+          top: '6px',
+          right: '4px',
+          color: token.colorTextSecondary,
+          fontSize: 10,
+          lineHeight: 0,
+          cursor: 'pointer',
+          opacity: 0,
+          transition: `all ${token.motionDurationSlow}`,
 
-            [`${iconCls}-close:hover`]: {
-              color: token.colorText,
-            },
+          [`${iconCls}-close:hover`]: {
+            color: token.colorText,
           },
+        },
+
+        [`${componentCls}-list-item:hover ${componentCls}-list-item-info`]: {
+          backgroundColor: token.controlItemBgHover,
+        },
+
+        [`
+      ${componentCls}-list-item:hover ${iconCls}-close,
+      ${componentCls}-list-item:hover ${componentCls}-list-item-card-actions-btn
+    `]: {
+          opacity: 1,
+        },
+
+        [`
+    ${componentCls}-list-item-error,
+    ${componentCls}-list-item-error ${componentCls}-text-icon > ${iconCls},
+    ${componentCls}-list-item-error ${componentCls}-list-item-name
+    `]: {
+          color: token.colorError,
+        },
+
+        [`${componentCls}-list-item-error ${componentCls}-list-item-card-actions`]: {
+          [iconCls]: {
+            color: token.colorError,
+          },
+
+          [`${componentCls}-list-item-card-actions-btn`]: {
+            opacity: 1,
+          },
+        },
+
+        [`${componentCls}-list-item-progress`]: {
+          position: 'absolute',
+          bottom: '-12px',
+          width: '100%',
+          paddingLeft: token.fontSizeBase + 12,
+          fontSize: token.fontSizeBase,
+          lineHeight: 0,
         },
       },
     },
