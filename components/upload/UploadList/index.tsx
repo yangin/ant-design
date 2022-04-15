@@ -134,7 +134,7 @@ const InternalUploadList: React.ForwardRefRenderFunction<unknown, UploadListProp
           customIcon.props.onClick(e);
         }
       },
-      className: `${prefixCls}-list-item-card-actions-btn`,
+      className: `${prefixCls}-list-item-action`,
     };
     if (isValidElement(customIcon)) {
       const btnIcon = cloneElement(customIcon, {

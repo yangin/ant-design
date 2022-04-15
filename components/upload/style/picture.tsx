@@ -8,7 +8,7 @@ const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const itemCls = `${listCls}-item`;
 
   return {
-    [`${componentCls}-picture-card-wrapper`]: {
+    [`${componentCls}-wrapper${componentCls}-picture-card-wrapper`]: {
       [`${listCls}-picture, ${listCls}-picture-card`]: {
         [itemCls]: {
           position: 'relative',
@@ -17,13 +17,13 @@ const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           border: `${token.controlLineWidth}px ${token.uploadPictureCardBorderStyle} ${token.colorBorder}`,
           borderRadius: token.radiusBase,
 
-          [`${itemCls}-error`]: {
-            borderColor: token.colorError,
+          [`${itemCls}-info`]: {
+            padding: 0,
           },
         },
 
-        [`${itemCls}-info`]: {
-          padding: 0,
+        [`${itemCls}-error`]: {
+          borderColor: token.colorError,
         },
 
         [`${itemCls}:hover ${itemCls}-info`]: {
@@ -103,14 +103,6 @@ const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           marginTop: 0,
           paddingLeft: '56px',
         },
-
-        [`${iconCls}-close`]: {
-          position: 'absolute',
-          top: '8px',
-          right: '8px',
-          lineHeight: 1,
-          opacity: 1,
-        },
       },
     },
   };
@@ -122,10 +114,11 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const itemCls = `${listCls}-item`;
 
   return {
-    [`${componentCls}-picture-card-wrapper`]: {
+    [`${componentCls}-wrapper${componentCls}-picture-card-wrapper`]: {
       ...clearFix(),
       display: 'inline-block',
       width: '100%',
+
       [`${componentCls}${componentCls}-select-picture-card`]: {
         width: token.uploadPictureCardSize,
         height: token.uploadPictureCardSize,
@@ -153,7 +146,7 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
       },
 
       // list
-      [`${listCls}-picture-card`]: {
+      [`${listCls}${listCls}-picture-card`]: {
         [`${listCls}-picture-card-container`]: {
           display: 'inline-block',
           width: token.uploadPictureCardSize,
@@ -234,12 +227,12 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
         [`${itemCls}-name`]: {
           display: 'none',
           margin: '8px 0 0',
-          padding: '0',
+          padding: 0,
           lineHeight: token.lineHeight,
           textAlign: 'center',
         },
 
-        [`${itemCls}-file ${itemCls}-name`]: {
+        [`${itemCls}-file + ${itemCls}-name`]: {
           position: 'absolute',
           bottom: '10px',
           display: 'block',
@@ -247,7 +240,7 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 
         [`${itemCls}-uploading`]: {
           [`&${itemCls}`]: {
-            backgroundColor: token.colorBgComponent,
+            backgroundColor: token.colorBgComponentSecondary,
           },
 
           [`${itemCls}-info`]: {

@@ -160,7 +160,7 @@ const ListItem = React.forwardRef(
     const downloadOrDelete = listType !== 'picture-card' && (
       <span
         key="download-delete"
-        className={classNames(`${prefixCls}-list-item-card-actions`, {
+        className={classNames(`${prefixCls}-list-item-actions`, {
           picture: listType === 'picture',
         })}
       >

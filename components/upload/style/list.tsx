@@ -4,7 +4,8 @@ import type { GenerateStyle, FullToken } from '../../_util/theme';
 const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
   const { componentCls, antCls, iconCls } = token;
   const itemCls = `${componentCls}-list-item`;
-  const actionsCls = `${itemCls}-card-actions`;
+  const actionsCls = `${itemCls}-actions`;
+  const actionCls = `${itemCls}-action`;
 
   return {
     [`${componentCls}-wrapper`]: {
@@ -32,23 +33,27 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             position: 'absolute',
             right: 0,
 
-            [`${actionsCls}-btn`]: {
+            [actionCls]: {
               opacity: 0,
             },
 
-            [`${actionsCls}-btn${antCls}-btn-sm`]: {
+            [`${actionCls}${antCls}-btn-sm`]: {
               height: '20px',
               lineHeight: 1,
+              // FIXME: should not override small button
+              '> span': {
+                transform: 'scale(1)',
+              },
             },
 
-            [`${actionsCls}.picture`]: {
+            '&.picture': {
               top: '22px',
               lineHeight: 0,
             },
 
             [`
-              ${actionsCls}-btn:focus,
-              ${actionsCls}.picture ${actionsCls}-btn
+              ${actionCls}:focus,
+              &.picture ${actionCls}
             `]: {
               opacity: 1,
             },
@@ -77,51 +82,6 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             },
           },
 
-          [`${iconCls}-close`]: {
-            position: 'absolute',
-            top: 6,
-            right: 4,
-            color: token.colorTextSecondary,
-            fontSize: 10,
-            lineHeight: 0,
-            cursor: 'pointer',
-            opacity: 0,
-            transition: `all ${token.motionDurationSlow}`,
-
-            [`${iconCls}-close:hover`]: {
-              color: token.colorText,
-            },
-          },
-
-          [`${itemCls}:hover ${itemCls}-info`]: {
-            backgroundColor: token.controlItemBgHover,
-          },
-
-          [`
-          ${itemCls}:hover ${iconCls}-close,
-          ${itemCls}:hover ${actionsCls}-btn
-        `]: {
-            opacity: 1,
-          },
-
-          [`
-          ${itemCls}-error,
-          ${itemCls}-error ${componentCls}-text-icon > ${iconCls},
-          ${itemCls}-error ${itemCls}-name
-        `]: {
-            color: token.colorError,
-          },
-
-          [`${itemCls}-error ${actionsCls}`]: {
-            [iconCls]: {
-              color: token.colorError,
-            },
-
-            [`${actionsCls}-btn`]: {
-              opacity: 1,
-            },
-          },
-
           [`${itemCls}-progress`]: {
             position: 'absolute',
             bottom: '-12px',
@@ -129,6 +89,34 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             paddingLeft: token.fontSizeBase + 12,
             fontSize: token.fontSizeBase,
             lineHeight: 0,
+          },
+        },
+
+        [`${itemCls}:hover ${itemCls}-info`]: {
+          backgroundColor: token.controlItemBgHover,
+        },
+
+        [`
+        ${itemCls}:hover ${actionCls}
+        `]: {
+          opacity: 1,
+        },
+
+        [`
+        ${itemCls}-error,
+        ${itemCls}-error ${componentCls}-text-icon > ${iconCls},
+        ${itemCls}-error ${itemCls}-name
+      `]: {
+          color: token.colorError,
+        },
+
+        [`${itemCls}-error ${actionsCls}`]: {
+          [iconCls]: {
+            color: token.colorError,
+          },
+
+          [actionCls]: {
+            opacity: 1,
           },
         },
       },
