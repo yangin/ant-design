@@ -230,6 +230,40 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           height: '100%',
           objectFit: 'contain',
         },
+
+        [`${itemCls}-name`]: {
+          display: 'none',
+          margin: '8px 0 0',
+          padding: '0',
+          lineHeight: token.lineHeight,
+          textAlign: 'center',
+        },
+
+        [`${itemCls}-file ${itemCls}-name`]: {
+          position: 'absolute',
+          bottom: '10px',
+          display: 'block',
+        },
+
+        [`${itemCls}-uploading`]: {
+          [`&${itemCls}`]: {
+            backgroundColor: token.colorBgComponent,
+          },
+
+          [`${itemCls}-info`]: {
+            height: 'auto',
+
+            [`&::before, ${iconCls}-eye, ${iconCls}-delete`]: {
+              display: 'none',
+            },
+          },
+        },
+
+        [`${itemCls}-progress`]: {
+          bottom: '32px',
+          width: 'calc(100% - 14px)',
+          paddingLeft: '0',
+        },
       },
     },
   };
