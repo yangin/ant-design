@@ -3,6 +3,7 @@ import { CSSObject } from '@ant-design/cssinjs';
 import { genComponentStyleHook, resetComponent } from '../../_util/theme';
 import genDraggerStyle from './dragger';
 import genListStyle from './list';
+import genMotionStyle from './motion';
 import { genPictureStyle, genPictureCardStyle } from './picture';
 import type { GenerateStyle, FullToken } from '../../_util/theme';
 
@@ -40,12 +41,13 @@ const genBaseStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 // ============================== Export ==============================
 export default genComponentStyleHook(
   'Upload',
-  token => [
+  (token, { hashId }) => [
     genBaseStyle(token),
     genDraggerStyle(token),
     genPictureStyle(token),
     genPictureCardStyle(token),
     genListStyle(token),
+    genMotionStyle(token, hashId),
   ],
   token => ({
     uploadPictureCardSize: 104,
