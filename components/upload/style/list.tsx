@@ -46,11 +46,6 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
               },
             },
 
-            '&.picture': {
-              top: '22px',
-              lineHeight: 0,
-            },
-
             [`
               ${actionCls}:focus,
               &.picture ${actionCls}
