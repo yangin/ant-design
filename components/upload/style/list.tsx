@@ -47,9 +47,9 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             },
 
             [`
-            ${actionsCls}-btn:focus,
-            ${actionsCls}.picture ${actionsCls}-btn
-          `]: {
+              ${actionsCls}-btn:focus,
+              ${actionsCls}.picture ${actionsCls}-btn
+            `]: {
               opacity: 1,
             },
 

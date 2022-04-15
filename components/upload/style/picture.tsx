@@ -117,7 +117,7 @@ const genPictureStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 };
 
 const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
-  const { componentCls } = token;
+  const { componentCls, iconCls } = token;
   const listCls = `${componentCls}-list`;
   const itemCls = `${listCls}-item`;
 
@@ -162,7 +162,7 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           verticalAlign: 'top',
         },
 
-        [`${listCls}${listCls}-picture-card::after`]: {
+        '&::after': {
           display: 'none',
         },
 
@@ -176,7 +176,7 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
           height: '100%',
           overflow: 'hidden',
 
-          [`${itemCls}-info::before`]: {
+          '&::before': {
             position: 'absolute',
             zIndex: 1,
             width: '100%',
@@ -186,6 +186,49 @@ const genPictureCardStyle: GenerateStyle<FullToken<'Upload'>> = token => {
             transition: `all ${token.motionDurationSlow}`,
             content: '" "',
           },
+        },
+
+        [`${itemCls}:hover ${itemCls}-info::before`]: {
+          opacity: 1,
+        },
+
+        [`${itemCls}-actions`]: {
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          zIndex: 10,
+          whiteSpace: 'nowrap',
+          transform: 'translate(-50%, -50%)',
+          opacity: 0,
+          transition: `all ${token.motionDurationSlow}`,
+
+          [`${iconCls}-eye, ${iconCls}-download, ${iconCls}-delete`]: {
+            zIndex: 10,
+            width: '16px',
+            margin: '0 4px',
+            // FIXME: @text-color-dark: fade(@white, 85%);
+            color: new TinyColor('#fff').setAlpha(0.85).toRgbString(),
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: `all ${token.motionDurationSlow}`,
+
+            '&:hover': {
+              // FIXME: @text-color-dark: fade(@white, 85%);
+              color: '#fff',
+            },
+          },
+        },
+
+        [`${itemCls}-info:hover + ${itemCls}-actions, ${itemCls}-actions:hover`]: {
+          opacity: 1,
+        },
+
+        [`${itemCls}-thumbnail, ${itemCls}-thumbnail img`]: {
+          position: 'static',
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
         },
       },
     },
