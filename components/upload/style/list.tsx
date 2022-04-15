@@ -60,6 +60,11 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
 
             [iconCls]: {
               color: token.uploadActionsColor,
+              transition: `all ${token.motionDurationSlow}`,
+            },
+
+            [`&:hover ${iconCls}`]: {
+              color: token.colorText,
             },
           },
 
@@ -100,6 +105,7 @@ const genListStyle: GenerateStyle<FullToken<'Upload'>> = token => {
         ${itemCls}:hover ${actionCls}
         `]: {
           opacity: 1,
+          color: token.colorText,
         },
 
         [`
